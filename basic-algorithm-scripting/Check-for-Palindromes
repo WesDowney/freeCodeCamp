@@ -1,0 +1,15 @@
+function palindrome(str) {
+
+  
+  // Remove non-alphanumeric characters
+  var cleanedString = str.replace(/[^0-9a-z]/gi, '').toLowerCase();
+  var reversedString = cleanedString.split('').reverse().join('');
+  
+  if (cleanedString === reversedString){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+palindrome("eye");
