@@ -1,0 +1,1 @@
+/* Quotes API : https://market.mashape.com/andruxnet/random-famous-quotes */
