@@ -10,6 +10,13 @@ html, body {
 	margin: 0;
 }
 
+body {
+	transition:background 1s;
+
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizelegibility;
+}
+
 /********** QUOTES BOX **********/
 
 .flexbox-container {
@@ -28,7 +35,38 @@ html, body {
 
 #quotes {
 	width: 500px;
-	height: 250px;
-
+	height: 300px;
+	padding: 20px;
 	border: 1px solid black;
+	border-radius: 8px;
+	transition:background 1s;
+	font-family: 'Raleway', sans-serif;
+	font-size: 25px;
+}
+
+.fa, p {
+	display: inline;
+}
+
+p {
+	padding: 20px;
+}
+
+.button {
+	/* background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.button:hover {
+    background-color: #0E8A08; 
+    color: white;
 }

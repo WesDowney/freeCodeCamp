@@ -9,6 +9,8 @@
 
 	<title>Random Quote Machine</title>
 
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -23,9 +25,13 @@
 
 <div class="flexbox-container">
 	<div id="quotes">
-		<p id="quote-text"></p>
+		<i class="fa fa-quote-left fa-3x" aria-hidden="true"></i>
+		<p id="quote-text"></p><br />
 		<p id="quote-author"></p>
-		<a href="#" onclick="getQuote()">Get New Quote</a>
+		<i class="fa fa-quote-right fa-3x" aria-hidden="true"></i><br />
+
+		<button class="button" id="new-quote-button" onclick="getQuote()">Get New Quote</button>
+		
 	</div>
 </div>
 
