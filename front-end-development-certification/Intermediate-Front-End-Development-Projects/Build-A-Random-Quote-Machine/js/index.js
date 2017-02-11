@@ -47,6 +47,12 @@ function changeColors() {
 	document.getElementById("quote-text").style.color = colors[index][2];
 	document.getElementById("quote-author").style.color = colors[index][2];
 	document.getElementById("new-quote-button").style.background = colors[index][3];
+	document.getElementById("tweet-button").style.background = colors[index][3];
+}
+
+function shareTweet() {
+	window.open('http://twitter.com/share?text=' + '"' + document.getElementById("quote-text").innerHTML + '"' + ' - ' + document.getElementById("quote-author").innerHTML,'','scrollbars=no,menubar=no,height=300,width=650,resizable=yes,toolbar=no,location=no,status=no');
+	// + '&url='+ window.location.href
 }
 
 window.onload = function WindowLoad(event) {
