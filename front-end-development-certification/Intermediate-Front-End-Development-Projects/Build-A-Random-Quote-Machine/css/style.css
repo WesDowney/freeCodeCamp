@@ -65,12 +65,9 @@ p {
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
+    height: 50px;
 }
 
 #text {
 	height: 250px;
-}
-
-#buttons {
-	height: 50px;
 }
