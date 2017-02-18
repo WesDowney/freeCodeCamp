@@ -1,3 +1,6 @@
+var Fahrenheit = 0;
+var Celsius = 0;
+
 $( document ).ready(function() {
 
 	// Query the IPInfo API with the current user's IP address to display their location
@@ -11,13 +14,23 @@ $( document ).ready(function() {
   		// Query the OpenWeatherMap API to return weather data based on the user's location
   		$.get("//api.openweathermap.org/data/2.5/weather?lat=" + location.loc[0] + "&lon=" + location.loc[1] + "&APPID=326b00a90b7281cb02b6f79e3284673c", function(response) {
 			// Convert the returned temperature from Kelvin to Fahrenheit and display it. 
-			document.getElementById("temp").innerHTML = Math.round((response.main.temp * (9/5)) - 459.67) + " F";
+			Fahrenheit = Math.round((response.main.temp * (9/5)) - 459.67);
+			Celsius = Math.round((Fahrenheit - 32) * (5/9));
+			displayFahrenheit();
 			document.getElementById("condition").innerHTML = toTitleCase(response.weather[0].description);
 			// alert(JSON.stringify(response, null, 4)); // Shows the whole returned object nicely formatted for debugging 
 		}, "jsonp")
 	}, "jsonp")
 
 });
+
+function displayFahrenheit(){
+	document.getElementById("temp").innerHTML = Fahrenheit + " °<a href='#' onclick='displayCelsius()'>F</a>";
+}
+
+function displayCelsius(){
+	document.getElementById("temp").innerHTML = Celsius + " °<a href='#' onclick='displayFahrenheit()'>C</a>";
+}
 
 // http://stackoverflow.com/questions/196972/convert-string-to-proper-case-with-javascript/196991#196991
 function toTitleCase(str)
