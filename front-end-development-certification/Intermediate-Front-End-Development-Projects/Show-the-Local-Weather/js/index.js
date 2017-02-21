@@ -23,23 +23,28 @@ $( document ).ready(function() {
 
 			// Set the background image depending on weather condition. http://openweathermap.org/weather-conditions
 			// All images free to use personal/commercial from pexels.com and pixabay.com
+			var background = document.getElementById("bg");
+
 			switch(response.weather[0].main) {
 				case "Clear": 
-					$('body').css('background', 'url(img/clear.jpg) no-repeat center center fixed'); 
+					bg.style.backgroundImage = "url(img/clear.jpg)";
 					break;
 				case "Clouds":
-					$('body').css('background', 'url(img/clouds.jpeg) no-repeat center center fixed');
+					bg.style.backgroundImage = "url(img/clouds.jpeg)";
 					break;
 				case "Rain":
-					$('body').css('background', 'url(img/rain.jpeg) no-repeat center center fixed');
+					bg.style.backgroundImage = "url(img/rain.jpeg)";
+					break;
+				case "Drizzle":
+					bg.style.backgroundImage = "url(img/rain.jpeg)";
 					break;
 				case "Thunderstorm":
-					$('body').css('background', 'url(img/lightning.jpg) no-repeat center center fixed');
+					bg.style.backgroundImage = "url(img/lightning.jpg)";
 					break;
 				case "Snow":
-					$('body').css('background', 'url(img/snow.jpg) no-repeat center center fixed');
+					bg.style.backgroundImage = "url(img/snow.jpg)";
 					break;
-			}		
+			}	
 		}, "jsonp")
 	}, "jsonp")
 
