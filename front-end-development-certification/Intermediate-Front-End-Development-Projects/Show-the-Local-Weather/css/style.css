@@ -11,10 +11,14 @@ html, body {
 }
 
 body {
-	transition:background 1s;
+	background-color: lightblue;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 
 	-webkit-font-smoothing: antialiased;
-	text-rendering: optimizelegibility;
+	text-rendering: optimizelegibility; 
 }
 
 /********** WEATHER SECTION **********/
@@ -34,12 +38,10 @@ body {
 }
 
 #weather {
-	width: 500px;
-	height: 300px;
 	padding: 20px;
 	border: 1px solid black;
 	border-radius: 8px;
-	transition:background 1s;
+	transition:background 1s; 
 	font-family: 'Raleway', sans-serif;
 	font-size: 25px;
 }
