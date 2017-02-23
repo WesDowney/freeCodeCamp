@@ -9,6 +9,7 @@
 
 	<title>Wikipedia Viewer</title>
 
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
 
@@ -25,7 +26,11 @@
 <div class="flexbox-container" id="container">
 	<div class="flexbox-container" id="box">
 		<div id="search">
-			Text
+			<form>
+				<input placeholder="Enter your search term..." type="search" value="" name="search" id="search">
+				<button type="submit"><i class="fa fa-search"></i></button>
+				<button onclick="location.href='https://en.wikipedia.org/wiki/Special:Random';"><i class="fa fa-random"></i></button>
+			</form>
 		</div>
 	</div>
 </div>
