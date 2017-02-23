@@ -51,11 +51,11 @@ $( document ).ready(function() {
 });
 
 function displayFahrenheit(){
-	document.getElementById("temp").innerHTML = Fahrenheit + " °<a href='#' onclick='displayCelsius()'>F</a>";
+	document.getElementById("temp").innerHTML = "<h1>" + Fahrenheit + "°<a href='#' onclick='displayCelsius()'>F</a></h1>";
 }
 
 function displayCelsius(){
-	document.getElementById("temp").innerHTML = Celsius + " °<a href='#' onclick='displayFahrenheit()'>C</a>";
+	document.getElementById("temp").innerHTML = "<h1>" + Celsius + "°<a href='#' onclick='displayFahrenheit()'>C</a></h1>";
 }
 
 // http://stackoverflow.com/questions/196972/convert-string-to-proper-case-with-javascript/196991#196991
