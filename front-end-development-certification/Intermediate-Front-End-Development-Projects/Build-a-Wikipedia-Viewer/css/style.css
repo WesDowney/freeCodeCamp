@@ -30,20 +30,23 @@ body {
 	-webkit-box-align: center;
 }
 
+.vert-align-top {
+	align-items: flex-start; 
+	-ms-flex-align: flex-start;
+	-webkit-align-items: flex-start;
+	-webkit-box-align: flex-start;
+	margin: 5px;
+}
+
 #container {
 	height: 100%;
 }
 
-#box {
+#search {
 	background: white;
 	text-align: center;
-	padding: 20px;
+	padding: 10px;
 	border: 2px solid black;
 	border-radius: 10px;
-	transition:background 1s; 
-}
-
-#search {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 30px;
 }
