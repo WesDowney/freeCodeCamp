@@ -14,15 +14,35 @@ function searchWikipedia() {
 	    success: function(data) {
 	    	// alert(JSON.stringify(data, null, 4)); // Shows the whole returned object nicely formatted for debugging 
 	    	/* 
-		    	data[1] are titles
-		    	data[2] are descriptions
-		    	data[3] are links
+	    		API Data Response:
+			    	data[1] are titles
+			    	data[2] are descriptions
+			    	data[3] are links
 		    */ 
-	    	alert(data[3][0]);
 
 	    	// Change the search box to align to vertically align top
 	    	var container = document.getElementById("container");
-			container.className += " vert-align-top";
+			container.className = "flexbox-container vert-align-top";
+
+			// Create the new div that will hold the search results
+			var searchResults = document.createElement('div');
+			searchResults.id = 'searchResults';
+			// Append the search results div to body below the search box
+			document.getElementsByTagName('body')[0].appendChild(searchResults);
+			// container.appendChild(searchResults);
+
+			// Create an inner divs for each article
+			for (var i = 0; i < data[1].length; i++) {
+				var article = document.createElement('div');
+				article.className = 'article';
+
+				// Add the title, description and link
+				article.innerHTML = '<a href="' + data[3][i] +'"><h3>' + data[1][i] + '</h3>\
+									<p>' + data[2][i] + '</p></a>';
+
+				// Append the article to the search results div
+				searchResults.appendChild(article);
+			}
 	    }
 	} );
 

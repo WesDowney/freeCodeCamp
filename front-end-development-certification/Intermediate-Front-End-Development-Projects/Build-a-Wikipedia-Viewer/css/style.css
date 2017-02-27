@@ -38,7 +38,7 @@ body {
 	margin: 5px;
 }
 
-#container {
+.full-height {
 	height: 100%;
 }
 
@@ -49,4 +49,8 @@ body {
 	border: 2px solid black;
 	border-radius: 10px;
 	font-family: 'Open Sans', sans-serif;
+}
+
+.article {
+
 }
