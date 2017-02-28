@@ -1,5 +1,6 @@
 var searchButton = document.getElementById('searchButton');
 
+
 function searchWikipedia() {
 	
 	var searchTerm = document.getElementById("searchQuery").value;
@@ -48,4 +49,17 @@ function searchWikipedia() {
 
 }
 
-searchButton.onclick = searchWikipedia;
+$(document).ready(function(){
+	var searchBoxOpen = false;
+
+    $("#searchButton").click(function(){
+    	if (searchBoxOpen == false) {
+    		$("#searchQuery").animate({
+            	width: 'toggle'
+        	});
+        	searchBoxOpen = true;
+    	} else {
+    		searchWikipedia();
+    	}
+    });
+});
