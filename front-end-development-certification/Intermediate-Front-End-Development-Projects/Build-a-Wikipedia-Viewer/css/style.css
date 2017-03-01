@@ -54,7 +54,28 @@ body {
 }
 
 #searchQuery {
-	display:none; /* Hide it until the button is pressed */
+	display: none; /* Hide it until the button is pressed */
+	width: 350px;
+	height: 75px;
+	font-size: 50px;
+}
+
+.fa {
+	font-size: 50px;
+}
+
+button {
+	background: rgb(86, 117, 154); /* dark blue */
+	color: white;
+	border-radius: 10px;
+	width: 75px;
+	height: 75px;
+}
+
+button:hover {
+	cursor: pointer;
+	color: black;
+	background: rgb(203,213,224); /* light blue */
 }
 
 .article {
