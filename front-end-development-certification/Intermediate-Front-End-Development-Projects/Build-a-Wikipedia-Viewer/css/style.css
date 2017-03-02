@@ -18,7 +18,7 @@ body {
 	text-rendering: optimizelegibility; 
 }
 
-/********** SEARCH SECTION **********/
+/********** SEARCH BOX SECTION **********/
 
 .flexbox-container {
 	display: flex;
@@ -50,6 +50,9 @@ body {
 	padding: 10px;
 	border: 2px solid black;
 	border-radius: 10px;
+	box-shadow: 3px 3px 3px black;
+	-moz-box-shadow: 3px 3px 3px black;
+    -webkit-box-shadow: 3px 3px 3px black;
 	font-family: 'Open Sans', sans-serif;
 }
 
@@ -73,11 +76,22 @@ button {
 }
 
 button:hover {
+	background: rgb(203,213,224); /* light blue */
 	cursor: pointer;
 	color: black;
-	background: rgb(203,213,224); /* light blue */
 }
 
-.article {
+/********** SEARCH RESULTS SECTION **********/
 
+.article {
+	background: white;
+	width: 70%;
+	padding: 10px;
+	border: 2px solid black;
+	border-radius: 10px;
+	box-shadow: 3px 3px 3px black;
+	-moz-box-shadow: 3px 3px 3px black;
+    -webkit-box-shadow: 3px 3px 3px black;
+	font-family: 'Open Sans', sans-serif;
+	margin: 10px;
 }

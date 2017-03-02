@@ -58,6 +58,12 @@ $(document).ready(function(){
             	width: 'toggle'
         	});
         	searchBoxOpen = true;
+    	} else if (document.getElementById("searchQuery").value.length == 0) {
+    		// The search box is open but the value is empty. Close the search box.
+    		$("#searchQuery").animate({
+            	width: 'toggle'
+        	});
+        	searchBoxOpen = false;
     	} else {
     		searchWikipedia();
     	}
