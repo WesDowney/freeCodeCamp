@@ -28,9 +28,10 @@ function searchWikipedia() {
 			// Create the new div that will hold the search results
 			var searchResults = document.createElement('div');
 			searchResults.id = 'searchResults';
+			// searchResults.className = "flexbox-container vert-align-top";
+
 			// Append the search results div to body below the search box
 			document.getElementsByTagName('body')[0].appendChild(searchResults);
-			// container.appendChild(searchResults);
 
 			// Create an inner divs for each article
 			for (var i = 0; i < data[1].length; i++) {
@@ -68,4 +69,11 @@ $(document).ready(function(){
     		searchWikipedia();
     	}
     });
+
+    // If the user presses the enter button while typing in the search box, submit the search button
+    $("#searchQuery").keyup(function(event){
+	    if(event.keyCode == 13){
+	        $("#searchButton").click();
+	    }
+	});
 });

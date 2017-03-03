@@ -24,12 +24,14 @@ body {
 	display: flex;
 	display: -ms-flexbox;
 	display: -webkit-flex;
+    display: -moz-box;
 
-	justify-content: center;
+	flex-direction: column;
 	align-items: center;
 	-ms-flex-align: center;
 	-webkit-align-items: center;
 	-webkit-box-align: center;
+	justify-content: center;
 }
 
 .vert-align-top {
