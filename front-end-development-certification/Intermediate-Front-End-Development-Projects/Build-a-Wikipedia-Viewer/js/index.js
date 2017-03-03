@@ -39,7 +39,7 @@ function searchWikipedia() {
 				article.className = 'article';
 
 				// Add the title, description and link
-				article.innerHTML = '<a href="' + data[3][i] +'"><h3>' + data[1][i] + '</h3>\
+				article.innerHTML = '<a href="' + data[3][i] +'"><h2>' + data[1][i] + '</h2>\
 									<p>' + data[2][i] + '</p></a>';
 
 				// Append the article to the search results div
