@@ -58,6 +58,9 @@ $(document).ready(function(){
     		$("#searchQuery").animate({
             	width: 'toggle'
         	});
+
+        	// When the search box is opened, set the cursor there for typing
+        	$('#searchQuery').focus();
         	searchBoxOpen = true;
     	} else if (document.getElementById("searchQuery").value.length == 0) {
     		// The search box is open but the value is empty. Close the search box.
