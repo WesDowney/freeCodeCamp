@@ -96,4 +96,17 @@ button:hover {
     -webkit-box-shadow: 3px 3px 3px black;
 	font-family: 'Open Sans', sans-serif;
 	margin: 10px auto 10px;
+
+	/* Enable hardware acceleration to fix laggy transitions */
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+
+	transition: all 500ms ease;
+}
+
+.article:hover {
+	width: 73%;
 }

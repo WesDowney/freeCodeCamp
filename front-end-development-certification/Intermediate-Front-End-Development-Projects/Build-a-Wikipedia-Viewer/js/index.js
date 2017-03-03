@@ -53,6 +53,8 @@ function searchWikipedia() {
 $(document).ready(function(){
 	var searchBoxOpen = false;
 
+	$("#search").fadeIn( 800 );
+
     $("#searchButton").click(function(){
     	if (searchBoxOpen == false) {
     		$("#searchQuery").animate({
