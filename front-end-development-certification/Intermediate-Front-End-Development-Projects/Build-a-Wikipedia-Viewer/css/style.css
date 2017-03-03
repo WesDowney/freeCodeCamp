@@ -39,7 +39,6 @@ body {
 	-ms-flex-align: flex-start;
 	-webkit-align-items: flex-start;
 	-webkit-box-align: flex-start;
-	margin: 5px;
 }
 
 .full-height {
@@ -56,6 +55,7 @@ body {
 	-moz-box-shadow: 3px 3px 3px black;
     -webkit-box-shadow: 3px 3px 3px black;
 	font-family: 'Open Sans', sans-serif;
+	margin: 10px auto 10px;
 }
 
 #searchQuery {
@@ -95,5 +95,5 @@ button:hover {
 	-moz-box-shadow: 3px 3px 3px black;
     -webkit-box-shadow: 3px 3px 3px black;
 	font-family: 'Open Sans', sans-serif;
-	margin: 10px;
+	margin: 10px auto 10px;
 }
