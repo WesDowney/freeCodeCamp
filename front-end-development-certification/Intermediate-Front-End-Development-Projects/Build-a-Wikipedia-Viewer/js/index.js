@@ -69,6 +69,7 @@ $(document).ready(function(){
         	});
         	searchBoxOpen = false;
     	} else {
+    		$( ".article" ).remove();
     		searchWikipedia();
     	}
     });
