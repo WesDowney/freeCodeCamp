@@ -13,12 +13,16 @@ $(document).ready(function(){
 			/*
 				Sample Data I'll be using: 
 
-				"logo": "https://static-cdn.jtvnw.net/jtv_user_pictures/hebo-profile_image-6947308654ad603f-300x300.jpeg"
-				"url": "https://www.twitch.tv/hebo",
-				"status": "Zelda: Breath of The Weeb - Twitter: @LIRIK "
-				"display_name": "LIRIK"
-				"views": 162090817,
-    			"followers": 1587337,
+				From '/streams/:stream'
+					
+				
+				From '/channels/:channel'
+					"logo": "https://static-cdn.jtvnw.net/jtv_user_pictures/hebo-profile_image-6947308654ad603f-300x300.jpeg"
+					"url": "https://www.twitch.tv/hebo",
+					"status": "Zelda: Breath of The Weeb - Twitter: @LIRIK "
+					"display_name": "LIRIK"
+					"views": 162090817,
+	    			"followers": 1587337,
 
 			*/
 
