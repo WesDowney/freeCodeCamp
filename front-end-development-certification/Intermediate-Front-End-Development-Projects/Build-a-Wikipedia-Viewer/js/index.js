@@ -28,7 +28,6 @@ function searchWikipedia() {
 			// Create the new div that will hold the search results
 			var searchResults = document.createElement('div');
 			searchResults.id = 'searchResults';
-			// searchResults.className = "flexbox-container vert-align-top";
 
 			// Append the search results div to body below the search box
 			document.getElementsByTagName('body')[0].appendChild(searchResults);
