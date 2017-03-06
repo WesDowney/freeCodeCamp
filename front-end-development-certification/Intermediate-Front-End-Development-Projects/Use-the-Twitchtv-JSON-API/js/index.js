@@ -2,7 +2,6 @@ function getTwitchStreamerData (streamer,queryType, callback) {
 	// queryType can be either users, channels or streams
 	var twitchPassThroughAPI = "https://wind-bow.gomix.me/twitch-api/" + queryType + "/" + streamer;
 
-	alert(twitchPassThroughAPI);
 	$.ajax( {
 	    url: twitchPassThroughAPI,
 	    dataType: 'jsonp', // jsonp helps with cross origin error
@@ -13,12 +12,34 @@ function getTwitchStreamerData (streamer,queryType, callback) {
 }
 
 $(document).ready(function(){
-	var streamers = ["lirik", "ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
+	var streamerSection = document.getElementById("streamers");
+	var streamers = ["dreadztv", "lirik", "ESL_SC2", "freecodecamp"];
+	// more: "cretetion", "OgamingSC2", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"
 
-	getTwitchStreamerData(streamers[0],'streams', function(streamerData) {
-		alert(JSON.stringify(streamerData, null, 4)); // Shows the whole returned object nicely formatted for debugging 
-	});
+	for (var i = 0; i < streamers.length; i++) {
+		getTwitchStreamerData(streamers[i],'streams', function(streamerData) {
+			if (streamerData.stream != null) {
+				// The user is currently online and streaming. Populate a card
+				var card = document.createElement('div');
+				card.className = 'card';
 
+				// Populate the card with streamer data
+				card.innerHTML = '<img class="card-img-top" src="" alt="Stream Image">\
+								  <div class="card-block">\
+								  	<h4 class="card-title">Streamer Display Name</h4>\
+									<p class="card-text">Streamer Status Streamer Status Streamer Status Streamer Status Streamer Status Streamer Status</p>\
+									<a href="#" class="btn btn-primary">View</a>\
+								  </div>';
+
+				// Append the card to the streamer section
+				streamerSection.appendChild(card);
+			} else {
+				alert('This user is offline');
+			} 
+			// alert(JSON.stringify(streamerData, null, 4)); // Shows the whole returned object nicely formatted for debugging 
+		});
+	}
+	
 	/*
 		Sample Data I'll be using: 
 

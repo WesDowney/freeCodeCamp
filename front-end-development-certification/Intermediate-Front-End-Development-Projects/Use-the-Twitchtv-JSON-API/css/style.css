@@ -11,6 +11,10 @@ nav {
 	margin-bottom: 25px;
 }
 
+.card {
+	width: 20rem;
+}
+
 .card-block .btn {
 	display: block;
 	margin: 0 auto;
