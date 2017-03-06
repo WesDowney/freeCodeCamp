@@ -19,3 +19,7 @@ nav {
 	display: block;
 	margin: 0 auto;
 }
+
+.offline {
+	opacity: 0.5;
+}

@@ -24,6 +24,21 @@ $(document).ready(function(){
 				card.className = 'card';
 
 				// Populate the card with streamer data
+				card.innerHTML = '<img class="card-img-top" src="' + streamerData.stream.channel.logo + '" alt="Stream Image">\
+								  <div class="card-block">\
+								  	<h4 class="card-title">' + streamerData.stream.channel.display_name + '</h4>\
+									<p class="card-text">' + streamerData.stream.channel.status + '</p>\
+									<a href="' + streamerData.stream.channel.url +'" class="btn btn-primary">View</a>\
+								  </div>';
+
+				// Append the card to the streamer section
+				streamerSection.appendChild(card);
+			} else {
+				// The user is currently offline
+				var card = document.createElement('div');
+				card.className = 'card offline';
+
+				// Populate the card with streamer data
 				card.innerHTML = '<img class="card-img-top" src="" alt="Stream Image">\
 								  <div class="card-block">\
 								  	<h4 class="card-title">Streamer Display Name</h4>\
@@ -33,8 +48,6 @@ $(document).ready(function(){
 
 				// Append the card to the streamer section
 				streamerSection.appendChild(card);
-			} else {
-				alert('This user is offline');
 			} 
 			// alert(JSON.stringify(streamerData, null, 4)); // Shows the whole returned object nicely formatted for debugging 
 		});
