@@ -1,5 +1,5 @@
-function getTwitchStreamerData (streamer,queryType, callback) {
-	// queryType can be either users, channels or streams
+function getTwitchStreamerData (streamer, queryType, callback) {
+	// queryType can be either 'users', 'channels' or 'streams'
 	var twitchPassThroughAPI = "https://wind-bow.gomix.me/twitch-api/" + queryType + "/" + streamer;
 
 	$.ajax( {
@@ -7,50 +7,51 @@ function getTwitchStreamerData (streamer,queryType, callback) {
 	    dataType: 'jsonp', // jsonp helps with cross origin error
 	    type: 'GET',
 	    headers: { 'Twitch API App': 'v.1' }, 
-	    success: callback
+	    success: function(data) {
+	    	callback(data, streamer);
+	    }
 	} );
 }
 
 $(document).ready(function(){
 	var streamerSection = document.getElementById("streamers");
-	var streamers = ["dreadztv", "lirik", "ESL_SC2", "freecodecamp"];
+	var streamers = ["dreadztv", "lirik", "ESL_SC2", "freecodecamp", "LCK1"];
 	// more: "cretetion", "OgamingSC2", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"
 
 	for (var i = 0; i < streamers.length; i++) {
-		getTwitchStreamerData(streamers[i],'streams', function(streamerData) {
-			if (streamerData.stream != null) {
-				// The user is currently online and streaming. Populate a card
-				var card = document.createElement('div');
-				card.className = 'card';
+		// Get data from the 'channels' portion of the API and populate the cards
+		getTwitchStreamerData(streamers[i],'channels', function(streamerData, streamer) {
+			// Populate cards with the channel data
+			var card = document.createElement('div');
+			card.className = 'card';
+			card.id = 'user-' + streamer;
 
-				// Populate the card with streamer data
-				card.innerHTML = '<img class="card-img-top" src="' + streamerData.stream.channel.logo + '" alt="Stream Image">\
-								  <div class="card-block">\
-								  	<h4 class="card-title">' + streamerData.stream.channel.display_name + '</h4>\
-									<p class="card-text">' + streamerData.stream.channel.status + '</p>\
-									<a href="' + streamerData.stream.channel.url +'" class="btn btn-primary">View</a>\
-								  </div>';
+			// Populate the card with streamer data
+			card.innerHTML = '<img class="card-img-top" src="' + streamerData.logo + '" alt="Stream Image">\
+							  <div class="card-block">\
+							  	<h4 class="card-title">' + streamerData.display_name + '</h4>\
+								<p class="card-text">' + streamerData.status + '</p>\
+								<a href="' + streamerData.url +'" class="btn btn-primary">View</a>\
+							  </div>'; 
 
-				// Append the card to the streamer section
-				streamerSection.appendChild(card);
-			} else {
-				// The user is currently offline
-				var card = document.createElement('div');
-				card.className = 'card offline';
-
-				// Populate the card with streamer data
-				card.innerHTML = '<img class="card-img-top" src="" alt="Stream Image">\
-								  <div class="card-block">\
-								  	<h4 class="card-title">Streamer Display Name</h4>\
-									<p class="card-text">Streamer Status Streamer Status Streamer Status Streamer Status Streamer Status Streamer Status</p>\
-									<a href="#" class="btn btn-primary">View</a>\
-								  </div>';
-
-				// Append the card to the streamer section
-				streamerSection.appendChild(card);
-			} 
-			// alert(JSON.stringify(streamerData, null, 4)); // Shows the whole returned object nicely formatted for debugging 
+			// Append the card to the streamer section
+			streamerSection.appendChild(card);
 		});
+
+		// Get data from the 'streams' portion of the API to see if the streamer is online
+		getTwitchStreamerData(streamers[i],'streams', function(streamerData, streamer) {
+			if (streamerData.stream == null){
+				// The streamer is offline. 
+				// Add the offline class to fade out the card
+				$( "#user-" + streamer ).addClass( "offline" );
+				//document.getElementById('user-' + streamers[i]).className = 'card offline';
+
+				// Change the button text to Offline and disable it
+			} else {
+				alert(JSON.stringify(streamerData, null, 4)); // Shows the whole returned object nicely formatted for debugging 
+			}
+		});
+
 	}
 	
 	/*
@@ -74,4 +75,3 @@ $(document).ready(function(){
 			"followers": 1587337,
 	*/
 });
-
