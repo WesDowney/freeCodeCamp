@@ -1,3 +1,6 @@
+var streamers = ["dreadztv", "lirik", "freecodecamp", "LCK1", "ESL_SC2"];
+// more: "cretetion", "OgamingSC2", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"
+
 function getTwitchStreamerData (streamer, queryType, callback) {
 	// queryType can be either 'users', 'channels' or 'streams'
 	var twitchPassThroughAPI = "https://wind-bow.gomix.me/twitch-api/" + queryType + "/" + streamer;
@@ -13,11 +16,20 @@ function getTwitchStreamerData (streamer, queryType, callback) {
 	} );
 }
 
+/*
+
+Read: promises, and $when
+http://stackoverflow.com/questions/3709597/wait-until-all-jquery-ajax-requests-are-done
+http://stackoverflow.com/questions/25491757/detecting-when-a-loop-of-ajax-calls-is-done
+
+$.when(getTwitchStreamerData())
+
+*/
+
 $(document).ready(function(){
 	var streamerSection = document.getElementById("streamers");
-	var streamers = ["dreadztv", "lirik", "ESL_SC2", "freecodecamp", "LCK1"];
-	// more: "cretetion", "OgamingSC2", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"
 
+	// Loop through to populate the cards.
 	for (var i = 0; i < streamers.length; i++) {
 		// Get data from the 'channels' portion of the API and populate the cards
 		getTwitchStreamerData(streamers[i],'channels', function(streamerData, streamer) {
@@ -37,21 +49,6 @@ $(document).ready(function(){
 			// Append the card to the streamer section
 			streamerSection.appendChild(card);
 		});
-
-		// Get data from the 'streams' portion of the API to see if the streamer is online
-		getTwitchStreamerData(streamers[i],'streams', function(streamerData, streamer) {
-			if (streamerData.stream == null){
-				// The streamer is offline. 
-				// Add the offline class to fade out the card
-				$( "#user-" + streamer ).addClass( "offline" );
-				//document.getElementById('user-' + streamers[i]).className = 'card offline';
-
-				// Change the button text to Offline and disable it
-			} else {
-				alert(JSON.stringify(streamerData, null, 4)); // Shows the whole returned object nicely formatted for debugging 
-			}
-		});
-
 	}
 	
 	/*
@@ -74,4 +71,21 @@ $(document).ready(function(){
 			"views": 162090817,
 			"followers": 1587337,
 	*/
+});
+
+$(document).ajaxStop(function () {
+	// Loop through to set online or offline
+	for (var i = 0; i < streamers.length; i++) {
+		// Get data from the 'streams' portion of the API to see if the streamer is online
+		getTwitchStreamerData(streamers[i],'streams', function(streamerData, streamer) {
+			alert(JSON.stringify(streamerData, null, 4)); // Shows the whole returned object nicely formatted for debugging 
+			if (streamerData.stream == null){
+				// The streamer is offline. Add the offline class to fade out the card
+				alert('Fading:' + streamer);
+				$( "#user-" + streamer ).addClass( "offline" );
+
+				// Change the button text to Offline and disable it
+			} 
+		});
+	}
 });
