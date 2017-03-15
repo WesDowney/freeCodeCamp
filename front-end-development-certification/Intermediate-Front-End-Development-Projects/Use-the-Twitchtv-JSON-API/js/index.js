@@ -37,7 +37,7 @@ function populateStreamerCards () {
 		    type: 'GET',
 		    headers: { 'Twitch API App': 'v.1' }, 
 		    success: function(data) {
-		    	// alert(JSON.stringify(data, null, 4)); // Shows the whole returned object nicely formatted for debugging 
+		    	alert(JSON.stringify(data, null, 4)); // Shows the whole returned object nicely formatted for debugging 
 		    	// Populate cards with the channel data
 				var card = document.createElement('div');
 				card.className = 'card';
@@ -58,8 +58,8 @@ function populateStreamerCards () {
 	}
 }
 
-/*
 $.when( populateStreamerCards() ).done(function() {
+	alert('Now it is time to check if they are online');
 	var twitchPassThroughAPI = "https://wind-bow.gomix.me/twitch-api/streams/";
 
 	// Loop through to fade the cards of offline streamers
@@ -73,7 +73,7 @@ $.when( populateStreamerCards() ).done(function() {
 		    success: function(data) {
 				if (data.stream == null){
 					// The streamer is offline. Add the offline class to fade out the card
-					$( "#user-" + streamer ).addClass( "offline" );
+					$( "#user-" + data.display_name ).addClass( "offline" );
 
 					// Change the button text to Offline and disable it
 				} 
@@ -83,8 +83,8 @@ $.when( populateStreamerCards() ).done(function() {
 	}
 });
 
-*/
-
+/*
 $(document).ready(function(){
 	populateStreamerCards();
 });
+*/
