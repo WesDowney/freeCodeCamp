@@ -78,8 +78,7 @@ $.when( populateStreamerCards() ).done(function() {
 					// Change the button text to Offline and disable it
 				} 
 		    }
-		});
-			
+		});		
 	}
 });
 
