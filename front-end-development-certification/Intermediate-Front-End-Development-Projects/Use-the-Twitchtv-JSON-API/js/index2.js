@@ -47,7 +47,6 @@ function fadeOfflineCards(streamer) {
 
 				// Change the button text to Offline and disable it
 				$( '#button-' + streamer ).text('Offline');
-				//$('a#a_tbnotesverbergen').text('new text');
 			} 
 	    }
 	});
