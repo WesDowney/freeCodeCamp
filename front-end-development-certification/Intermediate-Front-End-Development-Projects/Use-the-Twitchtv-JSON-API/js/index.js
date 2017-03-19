@@ -30,10 +30,19 @@ function populateStreamerCards (i) {
 
 				card.className = 'card';
 				card.id = 'card-' + data.display_name;
-				card.innerHTML = '<img class="card-img-top" src="' + data.logo + '" alt="Stream Image">\
+				card.innerHTML = '<div class="flip-container" ontouchstart="this.classList.toggle("hover");">\
+								    <div class="flipper">\
+								      <div class="front">\
+										  <img class="card-img-top" src="' + data.logo + '" alt="Stream Image">\
+									  </div>\
+									  <div class="back">\
+										  <!-- back content -->\
+									  </div>\
+								    </div>\
+								  </div>\
 								  <div class="card-block">\
 								  	<h4 class="card-title">' + data.display_name + '</h4>\
-									<p class="card-text">' + data.status + '</p>\
+									<p class="card-text" id="stream-info-' + data.display_name + '">' + data.status + '</p>\
 									<a href="' + data.url +'" class="btn btn-primary" id="button-' + data.display_name + '">View Stream</a>\
 								  </div>'; 
 	    	}
@@ -54,13 +63,16 @@ function fadeOfflineCards(streamer) {
 	    type: 'GET',
 	    headers: { 'Twitch API App': 'v.1' }, 
 	    success: function(data) {
-	    	alert(JSON.stringify(data, null, 4)); // Shows the whole returned object nicely formatted for debugging
+	    	// alert(JSON.stringify(data, null, 4)); // Shows the whole returned object nicely formatted for debugging
 	    	if (data.stream == null){ 
 				// The streamer is offline. Add the offline class to fade out the card
 				$( '#card-' + streamer ).addClass( 'offline' );
 
 				// Change the button text to Offline and disable it
 				$( '#button-' + streamer ).text('Offline');
+
+				// Clear the stream info since they aren't current streaming
+				$( '#stream-info-' + streamer ).text('Not currently streaming.');
 			} 
 	    }
 	});
