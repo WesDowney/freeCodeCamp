@@ -25,6 +25,10 @@ html {
 	margin: 0 auto;
 }
 
+.card-img-top {
+	max-height: 300px;
+}
+
 .offline {
 	opacity: 0.5;
 }
