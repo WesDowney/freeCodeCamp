@@ -1,4 +1,4 @@
-var streamers = ["dreadztv", "lirik", "freecodecamp", "LCK1", "ESL_SC2", "olofmeister"];
+var streamers = ["dreadztv", "lirik", "freecodecamp", "LCK1", "ESL_SC2", "olofmeister", "brunofin", "comster404", "curse"];
 
 function populateStreamerCards (i) {
 	var twitchPassThroughAPI = "https://wind-bow.gomix.me/twitch-api/channels/";
