@@ -16,8 +16,14 @@ html {
 	margin: 0 auto;
 }
 
+#streamers {
+	width: 900px;
+	margin: 0 auto;
+}
+
 .card {
 	width: 20rem;
+	width: 300px;
 }
 
 .card-block .btn {

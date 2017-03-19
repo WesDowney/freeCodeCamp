@@ -20,7 +20,16 @@ function populateStreamerCards (i) {
 				card.className = 'card offline';
 				card.id = 'card-404';
 
-				card.innerHTML = '<img class="card-img-top" src="img/Glitch_Purple.png" alt="Channel 404">\
+				card.innerHTML = '<div class="flip-container" ontouchstart="this.classList.toggle("hover");">\
+								    <div class="flipper">\
+								      <div class="front">\
+										  <img class="card-img-top" src="img/Glitch_Purple.png" alt="Channel 404">\
+									  </div>\
+									  <div class="back" >\
+										  <!-- Stream Preview Image -->\
+									  </div>\
+								    </div>\
+								  </div>\
 								  <div class="card-block">\
 									<p class="card-text">' + data.message + ' or has been closed</p>\
 									<a href="#" class="btn btn-primary disabled" id="button-404">Channel Error</a>\
@@ -33,10 +42,10 @@ function populateStreamerCards (i) {
 				card.innerHTML = '<div class="flip-container" ontouchstart="this.classList.toggle("hover");">\
 								    <div class="flipper">\
 								      <div class="front">\
-										  <img class="card-img-top" src="' + data.logo + '" alt="Stream Image">\
+										  <img class="card-img-top" src="' + data.logo + '" alt="Channel Logo">\
 									  </div>\
-									  <div class="back">\
-										  <!-- back content -->\
+									  <div class="back" id="streamer-preview-' + data.display_name + '">\
+										  <!-- Stream Preview Image -->\
 									  </div>\
 								    </div>\
 								  </div>\
@@ -63,7 +72,6 @@ function fadeOfflineCards(streamer) {
 	    type: 'GET',
 	    headers: { 'Twitch API App': 'v.1' }, 
 	    success: function(data) {
-	    	// alert(JSON.stringify(data, null, 4)); // Shows the whole returned object nicely formatted for debugging
 	    	if (data.stream == null){ 
 				// The streamer is offline. Add the offline class to fade out the card
 				$( '#card-' + streamer ).addClass( 'offline' );
@@ -73,7 +81,15 @@ function fadeOfflineCards(streamer) {
 
 				// Clear the stream info since they aren't current streaming
 				$( '#stream-info-' + streamer ).text('Not currently streaming.');
-			} 
+			} else {
+				// The streamer is currently streaming
+				// alert(JSON.stringify(data, null, 4)); // Shows the whole returned object nicely formatted for debugging
+
+				var streamPreview = data.stream.preview.template;
+				streamPreview = streamPreview.replace("{width}", "300");
+				streamPreview = streamPreview.replace("{height}", "170");
+				$( '#streamer-preview-' + streamer ).html('<img class="card-img-top" src="' + streamPreview + '" alt="' + streamer + ' Preview">')
+			}
 	    }
 	});
 }
